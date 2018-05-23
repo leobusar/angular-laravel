@@ -1,0 +1,41 @@
+<div class="row">
+<div class="container">
+  		<h1>Tareas de {{owner}}</h1>
+  <div *ngIf="tasks?.length; else notask" >
+
+  	<ul class="list-group">
+  		<li class="list-group-item list-group-item-action" *ngFor="let task of tasks">
+  			<strong>
+  				{{ task.category }}
+  			</strong>
+  			{{ task.name }}
+        <input class="btn btn-danger" type="button" name="Delete" value="Delete" (click)="delTask(event, task)">
+  		</li>
+  	</ul>
+
+  </div>
+  <div>
+  	<form (ngSubmit)="addTask()" >
+  		<div class="form-group">
+  			<label for="name">Name</label>
+  			<div class="form-input">
+  				<input type="text" name="name" [(ngModel)]="task.name">
+  			</div>
+  			<label for="name">Category</label>
+  			<div class="form-input">
+  				<input type="text" name="category" [(ngModel)]="task.category">
+  			</div>
+  			
+  		</div>
+  		<input class="btn" type="submit" name="submit" value="Agregar">
+  		
+  	</form>
+  </div>
+
+  <ng-template #notask> 
+  	<h3>
+  		No hay tareas
+  	</h3>
+  </ng-template>
+</div>
+</div>
